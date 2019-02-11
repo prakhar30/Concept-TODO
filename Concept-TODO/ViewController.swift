@@ -69,6 +69,9 @@ extension ViewController: UICollectionViewDataSource {
         collectionView.performBatchUpdates(nil, completion: nil)
     }
     
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         switch collectionView.indexPathsForSelectedItems?.first {
