@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     @IBOutlet weak var helloLabelTrailing: NSLayoutConstraint!
     
@@ -28,6 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         todoBoards = RealmHelper.getAllBoards()
+        view.backgroundColor = color[0]
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,17 +78,16 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return todoBoards!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MainCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainCollectionViewCell
-        cell.backgroundColor = color[indexPath.row]
-        
         let todoBoard = todoBoards![indexPath.row] as! ToDoBoard
         cell.boardName.text = todoBoard.boardName
+        cell.backgroundColor = UIColor.white
         return cell
     }
     
@@ -138,13 +137,13 @@ extension ViewController: UICollectionViewDataSource {
     
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return returnDefaultCellSize(inset: calculateSectionInset())
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension MainViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         currentCenteredCellIndex = indexOfMajorCell()
     }
@@ -167,11 +166,14 @@ extension ViewController: UICollectionViewDelegate {
             UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: velocity.x, options: .allowUserInteraction, animations: {
                 scrollView.contentOffset = CGPoint(x: toValue, y: 0)
                 scrollView.layoutIfNeeded()
+                self.view.backgroundColor = self.color[snapToIndex]
             }, completion: nil)
-            
         } else {
             let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
             collectionViewFlowLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            UIView.animate(withDuration: 0.3) {
+                self.view.backgroundColor = self.color[indexPath.row]
+            }
         }
     }
 }
