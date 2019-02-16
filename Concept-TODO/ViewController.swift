@@ -66,6 +66,21 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
+        let frameforNewView = collectionView.convert(cell.frame, to: self.view)
+        self.createView(withFrame: frameforNewView, withColor: color[indexPath.row])
+    }
+    
+    func createView(withFrame: CGRect, withColor: UIColor) {
+        let newview = UIView(frame: withFrame)
+        newview.backgroundColor = withColor
+        view.addSubview(newview)
+        UIView.animate(withDuration: 0.5, animations: {
+            newview.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: self.view.frame.height)
+        }, completion: { (animationComplete) in
+            if animationComplete {
+            }
+        })
     }
     
 }
