@@ -107,6 +107,9 @@ extension MainViewController: UICollectionViewDataSource {
         }, completion: { (animationComplete) in
             if animationComplete {
                 self.addGestureRecognizer(toView: newview)
+                let boardDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardDetailViewController_ID") as! BoardDetailViewController
+                self.addChild(boardDetailsVC)
+                newview.addSubview(boardDetailsVC.view)
             }
         })
     }

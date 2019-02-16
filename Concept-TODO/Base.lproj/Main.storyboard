@@ -121,11 +121,11 @@
         <!--Board Detail View Controller-->
         <scene sceneID="HEP-8y-5y7">
             <objects>
-                <viewController id="hkr-MU-jVw" customClass="BoardDetailViewController" customModule="Concept_TODO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BoardDetailViewController_ID" id="hkr-MU-jVw" customClass="BoardDetailViewController" customModule="Concept_TODO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nDi-XN-Xz3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PSE-NW-k5N"/>
                     </view>
                 </viewController>
