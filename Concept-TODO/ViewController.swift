@@ -66,20 +66,13 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.performBatchUpdates(nil, completion: nil)
     }
     
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        switch collectionView.indexPathsForSelectedItems?.first {
-        case .some(indexPath):
-            return CGSize(width: 50.0, height: 50.0)
-        default:
-            return returnDefaultCellSize(inset: calculateSectionInset())
-        }
+        return returnDefaultCellSize(inset: calculateSectionInset())
     }
 }
 
