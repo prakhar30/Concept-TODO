@@ -15,7 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     let color = [UIColor.red, UIColor.blue, UIColor.green]
-    private var currentCenteredCellIndex = 0
+    var currentCenteredCellIndex = 0
+    var sourceRect: CGRect?
+    var customViewLayedOut = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,10 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         configureCollectionViewLayoutItemSize()
-        helloLabelTrailing.constant += calculateSectionInset()/2
+        if !customViewLayedOut {
+            helloLabelTrailing.constant += calculateSectionInset()
+            customViewLayedOut = true
+        }
     }
     
     func calculateSectionInset() -> CGFloat {
@@ -75,6 +80,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func createView(withFrame: CGRect, withColor: UIColor) {
+        self.sourceRect = withFrame
         let newview = UIView(frame: withFrame)
         newview.backgroundColor = withColor
         view.addSubview(newview)
@@ -82,8 +88,34 @@ extension ViewController: UICollectionViewDataSource {
             newview.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: { (animationComplete) in
             if animationComplete {
+                self.addGestureRecognizer(toView: newview)
             }
         })
+    }
+    
+    func addGestureRecognizer(toView: UIView) {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        toView.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            if swipeGesture.direction == .down {
+                self.dismissView(createdView: gesture.view!)
+            }
+        }
+    }
+    
+    func dismissView(createdView: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            createdView.frame = self.sourceRect!
+        }) { (animationComplete) in
+            if animationComplete {
+                print("View resized")
+                createdView.removeFromSuperview()
+            }
+        }
     }
     
 }
