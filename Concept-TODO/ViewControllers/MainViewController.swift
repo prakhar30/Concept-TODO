@@ -94,7 +94,7 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
         let frameforNewView = collectionView.convert(cell.frame, to: self.view)
-        self.createView(withFrame: frameforNewView, withColor: color[indexPath.row])
+        self.createView(withFrame: frameforNewView, withColor: UIColor.white)
     }
     
     func createView(withFrame: CGRect, withColor: UIColor) {
