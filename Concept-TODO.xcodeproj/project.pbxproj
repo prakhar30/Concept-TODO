@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95051C872218325D00B5EC98 /* ToDoBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95051C862218325D00B5EC98 /* ToDoBoard.swift */; };
+		95051C892218327300B5EC98 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95051C882218327300B5EC98 /* RealmHelper.swift */; };
 		956A81C82211B2AA00DA1DB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A81C72211B2AA00DA1DB0 /* AppDelegate.swift */; };
 		956A81CA2211B2AA00DA1DB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A81C92211B2AA00DA1DB0 /* ViewController.swift */; };
 		956A81CD2211B2AA00DA1DB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956A81CB2211B2AA00DA1DB0 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		07ED46FA839E31FB0C024D82 /* Pods-Concept-TODO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concept-TODO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Concept-TODO/Pods-Concept-TODO.debug.xcconfig"; sourceTree = "<group>"; };
+		95051C862218325D00B5EC98 /* ToDoBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoBoard.swift; sourceTree = "<group>"; };
+		95051C882218327300B5EC98 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		956A81C42211B2AA00DA1DB0 /* Concept-TODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Concept-TODO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		956A81C72211B2AA00DA1DB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		956A81C92211B2AA00DA1DB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +55,31 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		95051C852218324500B5EC98 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				95051C862218325D00B5EC98 /* ToDoBoard.swift */,
+				95051C882218327300B5EC98 /* RealmHelper.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		95051C8A2218328500B5EC98 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				956A81C92211B2AA00DA1DB0 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		95051C8B2218329100B5EC98 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				956A81D92211BB5700DA1DB0 /* MainCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		956A81BB2211B2AA00DA1DB0 = {
 			isa = PBXGroup;
 			children = (
@@ -72,13 +101,14 @@
 		956A81C62211B2AA00DA1DB0 /* Concept-TODO */ = {
 			isa = PBXGroup;
 			children = (
+				95051C8B2218329100B5EC98 /* CollectionViewCells */,
+				95051C8A2218328500B5EC98 /* ViewControllers */,
+				95051C852218324500B5EC98 /* Realm */,
 				956A81C72211B2AA00DA1DB0 /* AppDelegate.swift */,
-				956A81C92211B2AA00DA1DB0 /* ViewController.swift */,
 				956A81CB2211B2AA00DA1DB0 /* Main.storyboard */,
 				956A81CE2211B2AC00DA1DB0 /* Assets.xcassets */,
 				956A81D02211B2AC00DA1DB0 /* LaunchScreen.storyboard */,
 				956A81D32211B2AC00DA1DB0 /* Info.plist */,
-				956A81D92211BB5700DA1DB0 /* MainCollectionViewCell.swift */,
 			);
 			path = "Concept-TODO";
 			sourceTree = "<group>";
@@ -205,6 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95051C872218325D00B5EC98 /* ToDoBoard.swift in Sources */,
+				95051C892218327300B5EC98 /* RealmHelper.swift in Sources */,
 				956A81CA2211B2AA00DA1DB0 /* ViewController.swift in Sources */,
 				956A81DA2211BB5700DA1DB0 /* MainCollectionViewCell.swift in Sources */,
 				956A81C82211B2AA00DA1DB0 /* AppDelegate.swift in Sources */,

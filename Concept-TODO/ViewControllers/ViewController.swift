@@ -112,7 +112,6 @@ extension ViewController: UICollectionViewDataSource {
             createdView.frame = self.sourceRect!
         }) { (animationComplete) in
             if animationComplete {
-                print("View resized")
                 createdView.removeFromSuperview()
             }
         }
