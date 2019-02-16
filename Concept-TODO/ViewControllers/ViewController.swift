@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
@@ -18,9 +19,15 @@ class ViewController: UIViewController {
     var currentCenteredCellIndex = 0
     var sourceRect: CGRect?
     var customViewLayedOut = false
+    var todoBoards: NSArray? {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        todoBoards = RealmHelper.getAllBoards()
     }
     
     override func viewDidLayoutSubviews() {
@@ -30,6 +37,14 @@ class ViewController: UIViewController {
         if !customViewLayedOut {
             helloLabelTrailing.constant += calculateSectionInset()
             customViewLayedOut = true
+        }
+    }
+    
+    @IBAction func addBoardButtonAction(_ sender: Any) {
+        showInputDialog(title: "Create a new ToDo Board", subtitle: nil, actionTitle: "OK", cancelTitle: "Cancel", inputPlaceholder: "Board name", inputKeyboardType: .default, cancelHandler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }) { (boardName) in
+            RealmHelper.saveNewBoard(boardID: self.todoBoards!.count, boardName: boardName)
         }
     }
     
@@ -64,7 +79,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return todoBoards!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -29,4 +29,5 @@ class RealmHelper {
             realm.add(board, update: true)
         }
     }
+    
 }
