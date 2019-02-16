@@ -45,6 +45,7 @@ class ViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }) { (boardName) in
             RealmHelper.saveNewBoard(boardID: self.todoBoards!.count, boardName: boardName)
+            self.todoBoards = RealmHelper.getAllBoards()
         }
     }
     
@@ -85,6 +86,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MainCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainCollectionViewCell
         cell.backgroundColor = color[indexPath.row]
+        
+        let todoBoard = todoBoards![indexPath.row] as! ToDoBoard
+        cell.boardName.text = todoBoard.boardName
         return cell
     }
     

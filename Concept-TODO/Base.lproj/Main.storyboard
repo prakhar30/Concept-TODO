@@ -34,8 +34,27 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="340" height="375"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsu-eI-HqF">
+                                                    <rect key="frame" x="20" y="277" width="300" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="X4q-Gg-Nhv"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Nsu-eI-HqF" secondAttribute="trailing" constant="12" id="4SW-bU-b1V"/>
+                                            <constraint firstItem="Nsu-eI-HqF" firstAttribute="leading" secondItem="WxD-74-zn9" secondAttribute="leadingMargin" constant="12" id="BAj-0M-WZx"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Nsu-eI-HqF" secondAttribute="bottom" constant="60" id="dhK-1z-fsJ"/>
+                                        </constraints>
                                         <size key="customSize" width="340" height="375"/>
+                                        <connections>
+                                            <outlet property="boardName" destination="Nsu-eI-HqF" id="wLs-N4-dsZ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
