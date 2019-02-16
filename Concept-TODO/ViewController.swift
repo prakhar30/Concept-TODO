@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var helloLabelTrailing: NSLayoutConstraint!
+    
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     let color = [UIColor.red, UIColor.blue, UIColor.green]
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         configureCollectionViewLayoutItemSize()
+        helloLabelTrailing.constant += calculateSectionInset()/2
     }
     
     func calculateSectionInset() -> CGFloat {
