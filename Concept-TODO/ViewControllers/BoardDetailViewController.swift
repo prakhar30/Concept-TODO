@@ -11,7 +11,9 @@ import UIKit
 class BoardDetailViewController: UIViewController {
 
     @IBOutlet weak var addButton: UIButton!
+    var addTaskView = UIView()
     var addButtonFrame = CGRect()
+    var addButtonPressed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,19 +61,31 @@ class BoardDetailViewController: UIViewController {
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
-        let addTaskView = UIView(frame: CGRect(x: 0.0, y: 300.0, width: self.view.frame.width, height: 300.0))
-        addTaskView.alpha = 0.0
-        self.view.addSubview(addTaskView)
-        
-        let addTaskVC = self.storyboard?.instantiateViewController(withIdentifier: "NewTaskViewController_ID") as! NewTaskViewController
-        self.addChild(addTaskVC)
-        addTaskVC.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 300.0)
-        addTaskView.addSubview(addTaskVC.view)
-        UIView.animate(withDuration: 0.5, animations: {
-            addTaskView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 300.0)
-            addTaskView.alpha = 1.0
-        }) { (animationComplete) in
-            if animationComplete {
+        if !addButtonPressed {
+            addButtonPressed = true
+            addTaskView = UIView(frame: CGRect(x: 0.0, y: 300.0, width: self.view.frame.width, height: 300.0))
+            addTaskView.alpha = 0.0
+            self.view.addSubview(addTaskView)
+            
+            let addTaskVC = self.storyboard?.instantiateViewController(withIdentifier: "NewTaskViewController_ID") as! NewTaskViewController
+            self.addChild(addTaskVC)
+            addTaskVC.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 300.0)
+            addTaskView.addSubview(addTaskVC.view)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.addTaskView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 300.0)
+                self.addTaskView.alpha = 1.0
+            }) { (animationComplete) in
+                if animationComplete {
+                }
+            }
+        } else {
+            self.view.endEditing(true)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.addTaskView.alpha = 0.0
+            }) { (animationComplete) in
+                self.addTaskView.removeFromSuperview()
+                self.addButtonPressed = false
+                //SAVE textfieldvalue here and refresh the table
             }
         }
     }
