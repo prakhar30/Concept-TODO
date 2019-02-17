@@ -16,6 +16,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectedDay: UISegmentedControl!
     static var textFieldText = ""
+    static var indexSelected = 0
     weak var delegate: newTaskCloseButtonProtocol?
     
     override func viewDidLoad() {
@@ -31,6 +32,10 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         NewTaskViewController.textFieldText = textField.text!
+    }
+    
+    @IBAction func dayIndexChanged(_ sender: Any) {
+        NewTaskViewController.indexSelected = selectedDay.selectedSegmentIndex
     }
     
     @IBAction func closeButton(_ sender: Any) {

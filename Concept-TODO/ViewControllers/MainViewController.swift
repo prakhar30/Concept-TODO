@@ -94,10 +94,10 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
         let frameforNewView = collectionView.convert(cell.frame, to: self.view)
-        self.createView(withFrame: frameforNewView, withColor: UIColor.white)
+        self.createView(withFrame: frameforNewView, withColor: UIColor.white, atIndexPath: indexPath)
     }
     
-    func createView(withFrame: CGRect, withColor: UIColor) {
+    func createView(withFrame: CGRect, withColor: UIColor, atIndexPath: IndexPath) {
         self.sourceRect = withFrame
         let newview = UIView(frame: withFrame)
         newview.backgroundColor = withColor
@@ -108,6 +108,7 @@ extension MainViewController: UICollectionViewDataSource {
             if animationComplete {
                 self.addGestureRecognizer(toView: newview)
                 let boardDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardDetailViewController_ID") as! BoardDetailViewController
+                boardDetailsVC.selectedBoardID = atIndexPath.row
                 self.addChild(boardDetailsVC)
                 newview.addSubview(boardDetailsVC.view)
             }

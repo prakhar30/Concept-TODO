@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MOP-Mi-NOX">
-                                <rect key="frame" x="0.0" y="387" width="375" height="391"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="518"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qb9-XX-uZ1">
                                     <size key="itemSize" width="340" height="375"/>
@@ -29,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="WxD-74-zn9" customClass="MainCollectionViewCell" customModule="Concept_TODO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="340" height="375"/>
+                                        <rect key="frame" x="0.0" y="71.666666666666671" width="340" height="375"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="340" height="375"/>
@@ -96,8 +96,8 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QIA-4u-uLo" secondAttribute="trailing" constant="16" id="0Pw-LR-v4i"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PuF-Zj-LWT" secondAttribute="trailing" constant="16" id="7UK-IL-y57"/>
-                            <constraint firstItem="MOP-Mi-NOX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="343" id="8uJ-K2-2ZP"/>
-                            <constraint firstItem="MOP-Mi-NOX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="DbK-jN-JAa"/>
+                            <constraint firstItem="MOP-Mi-NOX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="8uJ-K2-2ZP"/>
+                            <constraint firstItem="MOP-Mi-NOX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-16" id="DbK-jN-JAa"/>
                             <constraint firstItem="MOP-Mi-NOX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="G0a-CJ-QN9"/>
                             <constraint firstItem="6i5-5g-d9x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gxx-LP-8JQ"/>
                             <constraint firstItem="6i5-5g-d9x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Jv0-Jg-X8A"/>
@@ -260,6 +260,9 @@
                                     <segment title="Today"/>
                                     <segment title="Tomorrow"/>
                                 </segments>
+                                <connections>
+                                    <action selector="dayIndexChanged:" destination="Q44-09-3An" eventType="valueChanged" id="YvM-MT-KdL"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

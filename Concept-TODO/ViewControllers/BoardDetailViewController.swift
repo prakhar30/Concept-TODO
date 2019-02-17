@@ -20,10 +20,18 @@ class BoardDetailViewController: UIViewController {
     var addTaskView = UIView()
     var addButtonFrame = CGRect()
     var addButtonPressed = false
+    var selectedBoardID: Int?
+    var boardData: NSArray?
+    var tasksForToday = [BoardTasks]()
+    var tasksForTomorrow = [BoardTasks]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let id = selectedBoardID {
+            boardData = RealmHelper.getBoardTasks(boardID: id)
+            processData()
+            tableView.reloadData()
+        }
         setupViews()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -32,6 +40,22 @@ class BoardDetailViewController: UIViewController {
     func setupViews() {
         addButton.layer.cornerRadius = 22.0
         tableView.tableFooterView = UIView()
+    }
+    
+    func processData() {
+        tasksForToday.removeAll()
+        tasksForTomorrow.removeAll()
+        
+        if let data = boardData {
+            for datum in data {
+                let task = datum as! BoardTasks
+                if task.taskToBeDoneToday {
+                    tasksForToday.append(task)
+                } else {
+                    tasksForTomorrow.append(task)
+                }
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,13 +119,44 @@ class BoardDetailViewController: UIViewController {
             }) { (animationComplete) in
                 self.addTaskView.removeFromSuperview()
                 self.addButtonPressed = false
-                //SAVE textfieldvalue here and refresh the table
+                self.saveTaskToDB()
+                self.addRowToTable()
             }
+        }
+    }
+    
+    func saveTaskToDB() {
+        if NewTaskViewController.textFieldText != "" {
+            if NewTaskViewController.indexSelected == 0 {
+                RealmHelper.saveTaskOnBoard(boardID: self.selectedBoardID!, name: NewTaskViewController.textFieldText, isTaskForToday: true)
+            } else {
+                RealmHelper.saveTaskOnBoard(boardID: self.selectedBoardID!, name: NewTaskViewController.textFieldText, isTaskForToday: false)
+            }
+        }
+    }
+    
+    func addRowToTable() {
+        if NewTaskViewController.textFieldText != "" {
+            let task = BoardTasks()
+            task.taskIsDone = false
+            task.taskName = NewTaskViewController.textFieldText
+            task.boardID = selectedBoardID!
+            if NewTaskViewController.indexSelected == 0 {
+                task.taskToBeDoneToday = true
+                tasksForToday.insert(task, at: 0)
+            } else {
+                task.taskToBeDoneToday = false
+                tasksForTomorrow.insert(task, at: 0)
+            }
+            NewTaskViewController.indexSelected = 0
+            NewTaskViewController.textFieldText = ""
+            self.tableView.reloadData()
         }
     }
     
     func removeAddTaskViewFromSuperView() {
         self.view.endEditing(true)
+        self.addButtonPressed = false
         UIView.animate(withDuration: 0.5, animations: {
             self.addTaskView.alpha = 0.0
             self.tableView.alpha = 1.0
@@ -127,15 +182,21 @@ extension BoardDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            return tasksForToday.count
         } else {
-            return 3
+            return tasksForTomorrow.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: BoardDetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BoardDetailTableViewCell
-        cell.taskLabel.text = "LOL it kind of works"
+        
+        if indexPath.section == 0 {
+            cell.taskLabel.text = tasksForToday[indexPath.row].taskName
+        } else {
+            cell.taskLabel.text = tasksForTomorrow[indexPath.row].taskName
+        }
+        
         return cell
     }
 }

@@ -30,4 +30,23 @@ class RealmHelper {
         }
     }
     
+    class func getBoardTasks(boardID: Int) -> NSArray {
+        var allBoards: Results<BoardTasks> = try! Realm().objects(BoardTasks.self).filter("boardID == \(boardID)")
+        allBoards = allBoards.sorted(byKeyPath: "timeAdded", ascending: false)
+        return Array(allBoards) as NSArray
+    }
+    
+    class func saveTaskOnBoard(boardID: Int, name: String, isTaskForToday: Bool) {
+        let task = BoardTasks()
+        task.boardID = boardID
+        task.taskName = name
+        task.taskIsDone = false
+        task.taskToBeDoneToday = isTaskForToday
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(task, update: true)
+        }
+    }
+    
 }
