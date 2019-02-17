@@ -17,6 +17,7 @@
 		956A81CF2211B2AC00DA1DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956A81CE2211B2AC00DA1DB0 /* Assets.xcassets */; };
 		956A81D22211B2AC00DA1DB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956A81D02211B2AC00DA1DB0 /* LaunchScreen.storyboard */; };
 		956A81DA2211BB5700DA1DB0 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A81D92211BB5700DA1DB0 /* MainCollectionViewCell.swift */; };
+		95A662D72218870A00F1ACA5 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A662D62218870A00F1ACA5 /* NewTaskViewController.swift */; };
 		FD91B7547DA7AD0150F95D55 /* Pods_Concept_TODO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7DFD512209498AE6AB589 /* Pods_Concept_TODO.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		956A81D12211B2AC00DA1DB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		956A81D32211B2AC00DA1DB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		956A81D92211BB5700DA1DB0 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		95A662D62218870A00F1ACA5 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		95F7DFD512209498AE6AB589 /* Pods_Concept_TODO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Concept_TODO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4720745920C0628DE62BCA8 /* Pods-Concept-TODO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concept-TODO.release.xcconfig"; path = "Pods/Target Support Files/Pods-Concept-TODO/Pods-Concept-TODO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 			children = (
 				956A81C92211B2AA00DA1DB0 /* MainViewController.swift */,
 				95051C8F22185B9700B5EC98 /* BoardDetailViewController.swift */,
+				95A662D62218870A00F1ACA5 /* NewTaskViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			files = (
 				95051C872218325D00B5EC98 /* ToDoBoard.swift in Sources */,
 				95051C9022185B9700B5EC98 /* BoardDetailViewController.swift in Sources */,
+				95A662D72218870A00F1ACA5 /* NewTaskViewController.swift in Sources */,
 				95051C892218327300B5EC98 /* RealmHelper.swift in Sources */,
 				95051C8E22183A6B00B5EC98 /* UIViewController+.swift in Sources */,
 				956A81CA2211B2AA00DA1DB0 /* MainViewController.swift in Sources */,
