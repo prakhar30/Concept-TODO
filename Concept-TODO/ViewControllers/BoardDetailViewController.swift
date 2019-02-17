@@ -7,9 +7,15 @@
 //
 
 import UIKit
+extension BoardDetailViewController: newTaskCloseButtonProtocol {
+    func closeNewTaskView() {
+        self.removeAddTaskViewFromSuperView()
+    }
+}
 
 class BoardDetailViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
     var addTaskView = UIView()
     var addButtonFrame = CGRect()
@@ -25,6 +31,7 @@ class BoardDetailViewController: UIViewController {
     
     func setupViews() {
         addButton.layer.cornerRadius = 22.0
+        tableView.tableFooterView = UIView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,12 +75,14 @@ class BoardDetailViewController: UIViewController {
             self.view.addSubview(addTaskView)
             
             let addTaskVC = self.storyboard?.instantiateViewController(withIdentifier: "NewTaskViewController_ID") as! NewTaskViewController
+            addTaskVC.delegate = self
             self.addChild(addTaskVC)
             addTaskVC.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 300.0)
             addTaskView.addSubview(addTaskVC.view)
             UIView.animate(withDuration: 0.5, animations: {
                 self.addTaskView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 300.0)
                 self.addTaskView.alpha = 1.0
+                self.tableView.alpha = 0.0
             }) { (animationComplete) in
                 if animationComplete {
                 }
@@ -82,11 +91,51 @@ class BoardDetailViewController: UIViewController {
             self.view.endEditing(true)
             UIView.animate(withDuration: 0.5, animations: {
                 self.addTaskView.alpha = 0.0
+                self.tableView.alpha = 1.0
             }) { (animationComplete) in
                 self.addTaskView.removeFromSuperview()
                 self.addButtonPressed = false
                 //SAVE textfieldvalue here and refresh the table
             }
         }
+    }
+    
+    func removeAddTaskViewFromSuperView() {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.addTaskView.alpha = 0.0
+            self.tableView.alpha = 1.0
+        }) { (animationComplete) in
+            self.addTaskView.removeFromSuperview()
+        }
+    }
+    
+}
+
+extension BoardDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Today"
+        } else {
+            return "Tomorrow"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 2
+        } else {
+            return 3
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: BoardDetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BoardDetailTableViewCell
+        cell.taskLabel.text = "LOL it kind of works"
+        return cell
     }
 }

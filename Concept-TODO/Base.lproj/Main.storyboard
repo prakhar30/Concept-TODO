@@ -153,25 +153,60 @@
                                     <action selector="addButtonAction:" destination="hkr-MU-jVw" eventType="touchUpInside" id="gCB-yv-frf"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZWC-Kt-Pj8">
+                                <rect key="frame" x="16" y="120" width="343" height="542"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="3xp-iz-nhx" customClass="BoardDetailTableViewCell" customModule="Concept_TODO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3xp-iz-nhx" id="NOP-8Z-ISo">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJb-1m-VEN">
+                                                    <rect key="frame" x="15" y="12" width="277" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskLabel" destination="JJb-1m-VEN" id="7Tt-Ok-ezq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hkr-MU-jVw" id="eoB-wA-6hG"/>
+                                    <outlet property="delegate" destination="hkr-MU-jVw" id="LYR-Ji-Cih"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fe8-kI-98V" firstAttribute="leading" secondItem="PSE-NW-k5N" secondAttribute="leading" constant="16" id="7Mi-dd-lJx"/>
+                            <constraint firstItem="ZWC-Kt-Pj8" firstAttribute="top" secondItem="fe8-kI-98V" secondAttribute="bottom" constant="8" id="ADU-ZJ-hy2"/>
                             <constraint firstItem="fe8-kI-98V" firstAttribute="top" secondItem="mQU-uO-D8p" secondAttribute="bottom" constant="8" id="BGf-wr-dZY"/>
                             <constraint firstItem="mQU-uO-D8p" firstAttribute="leading" secondItem="PSE-NW-k5N" secondAttribute="leading" constant="16" id="OG3-Tg-62K"/>
+                            <constraint firstItem="ZWC-Kt-Pj8" firstAttribute="leading" secondItem="PSE-NW-k5N" secondAttribute="leading" constant="16" id="TAK-TY-97b"/>
+                            <constraint firstItem="PSE-NW-k5N" firstAttribute="trailing" secondItem="ZWC-Kt-Pj8" secondAttribute="trailing" constant="16" id="WSi-KZ-6y9"/>
                             <constraint firstItem="PSE-NW-k5N" firstAttribute="trailing" secondItem="mQU-uO-D8p" secondAttribute="trailing" constant="16" id="fen-km-kPh"/>
                             <constraint firstItem="mQU-uO-D8p" firstAttribute="top" secondItem="PSE-NW-k5N" secondAttribute="top" id="nsh-HI-etH"/>
                             <constraint firstItem="PSE-NW-k5N" firstAttribute="trailing" secondItem="fe8-kI-98V" secondAttribute="trailing" constant="16" id="uya-Or-VWw"/>
+                            <constraint firstAttribute="bottom" secondItem="ZWC-Kt-Pj8" secondAttribute="bottom" constant="150" id="yYN-bN-Ymt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PSE-NW-k5N"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="BXY-eD-dhd" id="dk1-Hb-FAB"/>
+                        <outlet property="tableView" destination="ZWC-Kt-Pj8" id="Aw5-DY-OXn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktV-zX-EB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="109"/>
+            <point key="canvasLocation" x="821.60000000000002" y="108.62068965517241"/>
         </scene>
         <!--New Task View Controller-->
         <scene sceneID="gWo-wx-vaL">

@@ -7,12 +7,16 @@
 //
 
 import UIKit
+protocol newTaskCloseButtonProtocol: class {
+    func closeNewTaskView()
+}
 
 class NewTaskViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectedDay: UISegmentedControl!
     static var textFieldText = ""
+    weak var delegate: newTaskCloseButtonProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,5 +34,6 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func closeButton(_ sender: Any) {
+        delegate?.closeNewTaskView()
     }
 }
