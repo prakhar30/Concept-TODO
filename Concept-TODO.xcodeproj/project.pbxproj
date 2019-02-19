@@ -11,6 +11,8 @@
 		95051C892218327300B5EC98 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95051C882218327300B5EC98 /* RealmHelper.swift */; };
 		95051C8E22183A6B00B5EC98 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95051C8D22183A6B00B5EC98 /* UIViewController+.swift */; };
 		95051C9022185B9700B5EC98 /* BoardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95051C8F22185B9700B5EC98 /* BoardDetailViewController.swift */; };
+		951CB351221C76BA00532D36 /* UIColor - Swift Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951CB350221C76BA00532D36 /* UIColor - Swift Extension.swift */; };
+		951CB354221C78CB00532D36 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951CB353221C78CB00532D36 /* UIColorHelper.swift */; };
 		956A81C82211B2AA00DA1DB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A81C72211B2AA00DA1DB0 /* AppDelegate.swift */; };
 		956A81CA2211B2AA00DA1DB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A81C92211B2AA00DA1DB0 /* MainViewController.swift */; };
 		956A81CD2211B2AA00DA1DB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956A81CB2211B2AA00DA1DB0 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		95051C882218327300B5EC98 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		95051C8D22183A6B00B5EC98 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		95051C8F22185B9700B5EC98 /* BoardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDetailViewController.swift; sourceTree = "<group>"; };
+		951CB350221C76BA00532D36 /* UIColor - Swift Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor - Swift Extension.swift"; sourceTree = "<group>"; };
+		951CB353221C78CB00532D36 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
 		956A81C42211B2AA00DA1DB0 /* Concept-TODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Concept-TODO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		956A81C72211B2AA00DA1DB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		956A81C92211B2AA00DA1DB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -97,8 +101,17 @@
 			isa = PBXGroup;
 			children = (
 				95051C8D22183A6B00B5EC98 /* UIViewController+.swift */,
+				951CB350221C76BA00532D36 /* UIColor - Swift Extension.swift */,
 			);
 			path = Extention;
+			sourceTree = "<group>";
+		};
+		951CB352221C78B700532D36 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				951CB353221C78CB00532D36 /* UIColorHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		956A81BB2211B2AA00DA1DB0 = {
@@ -122,6 +135,7 @@
 		956A81C62211B2AA00DA1DB0 /* Concept-TODO */ = {
 			isa = PBXGroup;
 			children = (
+				951CB352221C78B700532D36 /* Helpers */,
 				95E0B18D22195C6C003CED8C /* TableViewCells */,
 				95051C8C22183A5300B5EC98 /* Extention */,
 				95051C8B2218329100B5EC98 /* CollectionViewCells */,
@@ -269,8 +283,10 @@
 				95051C872218325D00B5EC98 /* ToDoBoard.swift in Sources */,
 				95051C9022185B9700B5EC98 /* BoardDetailViewController.swift in Sources */,
 				95A662D72218870A00F1ACA5 /* NewTaskViewController.swift in Sources */,
+				951CB354221C78CB00532D36 /* UIColorHelper.swift in Sources */,
 				95051C892218327300B5EC98 /* RealmHelper.swift in Sources */,
 				95E0B18F22195C93003CED8C /* BoardDetailTableViewCell.swift in Sources */,
+				951CB351221C76BA00532D36 /* UIColor - Swift Extension.swift in Sources */,
 				95C5C10D2219645E0030E510 /* BoardTasks.swift in Sources */,
 				95051C8E22183A6B00B5EC98 /* UIViewController+.swift in Sources */,
 				956A81CA2211B2AA00DA1DB0 /* MainViewController.swift in Sources */,

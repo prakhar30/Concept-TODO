@@ -14,20 +14,22 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
-    let color = [UIColor.red, UIColor.blue, UIColor.green]
+    var color = [CAGradientLayer]()
     var currentCenteredCellIndex = 0
     var sourceRect: CGRect?
     var customViewLayedOut = false
     var todoBoards: NSArray? {
         didSet {
             self.collectionView.reloadData()
+            self.color = UIColorHelper.returnUIColouredViews(count: todoBoards!.count)
+            color[0].frame = self.view.frame
+            self.view.layer.insertSublayer(color[0], at: 0)
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         todoBoards = RealmHelper.getAllBoards()
-        view.backgroundColor = color[0]
     }
     
     override func viewDidLayoutSubviews() {
@@ -170,13 +172,15 @@ extension MainViewController: UICollectionViewDelegate {
             UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: velocity.x, options: .allowUserInteraction, animations: {
                 scrollView.contentOffset = CGPoint(x: toValue, y: 0)
                 scrollView.layoutIfNeeded()
-                self.view.backgroundColor = self.color[snapToIndex]
+                self.color[snapToIndex].frame = self.view.frame
+                self.view.layer.insertSublayer(self.color[snapToIndex], at: 0)
             }, completion: nil)
         } else {
             let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
             collectionViewFlowLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             UIView.animate(withDuration: 0.3) {
-                self.view.backgroundColor = self.color[indexPath.row]
+                self.color[indexPath.row].frame = self.view.frame
+                self.view.layer.insertSublayer(self.color[indexPath.row], at: 0)
             }
         }
     }
