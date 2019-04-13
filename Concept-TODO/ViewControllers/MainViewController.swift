@@ -22,8 +22,6 @@ class MainViewController: UIViewController {
         didSet {
             self.collectionView.reloadData()
             self.color = UIColorHelper.returnUIColouredViews(count: todoBoards!.count)
-            color[0].frame = self.view.frame
-            self.view.layer.insertSublayer(color[0], at: 0)
         }
     }
 
